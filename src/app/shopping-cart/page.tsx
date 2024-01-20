@@ -10,12 +10,12 @@ import { useEffect, useState } from 'react';
 const ShoppingCart = () => {
 	const [total, setTotal] = useState<number>(0);
 	const [products, setProducts] = useState<ProductType[]>(
-		JSON.parse(localStorage.getItem('carts') as string) || []
+		JSON.parse(window.localStorage.getItem('carts') as string) || []
 	);
 
 	const removeProduct = (id: number) => {
 		const updatedCart = products.filter(product => product.id !== id);
-		localStorage.setItem('carts', JSON.stringify(updatedCart));
+		window.localStorage.setItem('carts', JSON.stringify(updatedCart));
 		setProducts(updatedCart);
 	};
 
@@ -31,7 +31,7 @@ const ShoppingCart = () => {
 			return product;
 		});
 
-		localStorage.setItem('carts', JSON.stringify(updatedCart));
+		window.localStorage.setItem('carts', JSON.stringify(updatedCart));
 		setProducts(updatedCart);
 	};
 
@@ -52,7 +52,7 @@ const ShoppingCart = () => {
 				return product;
 			});
 
-			localStorage.setItem('carts', JSON.stringify(updatedCart));
+			window.localStorage.setItem('carts', JSON.stringify(updatedCart));
 			setProducts(updatedCart);
 		}
 	};
@@ -162,7 +162,7 @@ const ShoppingCart = () => {
 													xmlns='http://www.w3.org/2000/svg'
 													fill='none'
 													viewBox='0 0 24 24'
-													stroke-width='1.5'
+													strokeWidth='1.5'
 													stroke='currentColor'
 													className='h-5 w-5 cursor-pointer duration-150 hover:text-red-500'
 													onClick={() => removeProduct(product.id)}
@@ -232,7 +232,7 @@ const ShoppingCart = () => {
 								>
 									<path
 										d='M14.0002 9.33337V14M14.0002 18.6667H14.0118M25.6668 14C25.6668 20.4434 20.4435 25.6667 14.0002 25.6667C7.55684 25.6667 2.3335 20.4434 2.3335 14C2.3335 7.55672 7.55684 2.33337 14.0002 2.33337C20.4435 2.33337 25.6668 7.55672 25.6668 14Z'
-										stroke-width='2'
+										strokeWidth='2'
 										strokeLinecap='round'
 										strokeLinejoin='round'
 									></path>
